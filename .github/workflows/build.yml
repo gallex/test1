@@ -25,7 +25,9 @@ jobs:
           node-version: '14' # 或者你想要使用的版本
       
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd designer
+          npm install
 
       - name: Build the project
         run: npm run build
