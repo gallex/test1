@@ -17,15 +17,15 @@ jobs:
       # Checkout the other private project
       - name: Checkout other private project
         run: |
-          git clone https://gallex:${{secrets.PRIVATE_REPO_TOKEN}}@github.com/printspirit/spirit.git 
+          git clone https://gallex:${{secrets.PRIVATE_REPO_TOKEN}}@github.com/printspirit/designer.git 
 
-      - name: Set up Go 
-        uses: actions/setup-go@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          go-version: 1.22.4
+          node-version: '14' # 或者你想要使用的版本
       
-      # Install dependencies and build the other project
-      - name: Build other project
-        run: |
-          cd spirit
-          go build -tags center
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
